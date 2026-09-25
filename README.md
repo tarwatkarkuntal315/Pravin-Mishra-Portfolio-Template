@@ -17,6 +17,7 @@ This repository contains a clean, professional-looking **static portfolio websit
 ---
 
 ## What you will build
+
 A portfolio-style website hosted on:
 - **Ubuntu VM**
 - **Nginx**
@@ -25,6 +26,7 @@ A portfolio-style website hosted on:
 ---
 
 ## Mandatory Ownership Proof (DMI Rule)
+
 Before you deploy, you MUST edit the footer and add your details:
 
 Original:
@@ -40,3 +42,35 @@ Add this line (example):
 ```
 
 ✅ This proof must be visible in your browser screenshot submission.
+
+---
+
+## Footer Version and Deploy Date
+
+The portfolio footer shows the version, deployment date, and author:
+
+```html
+<p>Pravin Mishra Portfolio v1.0 — Deployed on <span id="deployDate"></span> — By Kuntal Tarwatkar</p>
+```
+
+The deployment date is generated automatically using JavaScript in `DD Mon YYYY` format.
+
+Example:
+
+```javascript
+const deployDate = new Date();
+
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+const formattedDate =
+  String(deployDate.getDate()).padStart(2, "0") +
+  " " +
+  months[deployDate.getMonth()] +
+  " " +
+  deployDate.getFullYear();
+
+document.getElementById("deployDate").textContent = formattedDate;
+```
+
+This avoids manually changing the date each time the portfolio is deployed.
